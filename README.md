@@ -25,7 +25,7 @@ php artisan migrate
 php artisan serve
 ```
 
-> **NOTE** You can execute php this command to generate fake data.
+> **NOTE** You can execute this command to generate fake data.
 ```
 artisan db:seed
 ```
