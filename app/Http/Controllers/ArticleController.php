@@ -34,10 +34,7 @@ class ArticleController extends Controller
 
     public function editById(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-        ]);
+        $this->validateForm($request);
         $article = Article::find($id);
         $article->title = $request->title;
         $article->content = $request->content;
@@ -47,11 +44,7 @@ class ArticleController extends Controller
 
     public function create(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-        ]);
-
+        $this->validateForm($request);
         $article = new Article;
         $article->title = $request->title;
         $article->content = $request->content;
@@ -61,6 +54,14 @@ class ArticleController extends Controller
 
     public function showAddView()
     {
-        return view('article.add', ['1' => '1']);
+        return view('article.add');
+    }
+
+    public function validateForm(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
     }
 }
